@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Student Assignment Planner",
+  "version": "1.0",
+  "description": "Helps students organize assignments and deadlines",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "alarms",
+    "notifications"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/assignment-logo16.png",
+      "48": "images/assignment-logo48.png",
+      "128": "images/assignment-logo128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "images/assignment-logo16.png",
+    "48": "images/assignment-logo48.png",
+    "128": "images/assignment-logo128.png"
+  }
+}
