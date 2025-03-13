@@ -1,0 +1,171 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+  }
+  
+  .container {
+    width: 400px;
+    padding: 15px;
+  }
+  
+  h1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .logo {
+    width: 30px;
+    height: auto;
+  }
+  .tab-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .tabs {
+    display: flex;
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 10px;
+    border:none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #64748b;
+    transition: all 0.3s ease;
+  }
+
+  .tab-btn:hover {
+    background-color: #e2e8f0;
+  }
+
+  .tab-btn.active {
+    color: #3a86ff;
+    border-bottom: 3px solid #3a86ff;
+    background-color: white;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 15px;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 80px;
+    resize: vertical;
+  }
+
+  button {
+    background-color: #3a86ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #2563eb;
+  }
+
+  .assignment-list {
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .assignment-item {
+    background-color: #f8fafc;
+    border-left: 4px solid #3a86ff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .assignment-item.high {
+    border-left-color: #ef4444;
+  }
+  
+  .assignment-item.medium {
+    border-left-color: #f59e0b;
+  }
+  
+  .assignment-item.low {
+    border-left-color: #10b981;
+  }
+  
+  .assignment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .assignment-title {
+    font-weight: 600;
+  }
+  
+  .assignment-date {
+    color: #64748b;
+    font-size: 0.85rem;
+  }
+  
+  .assignment-notes {
+    font-size: 0.9rem;
+    color: #475569;
+  }
+  
+  .empty-state {
+    color: #94a3b8;
+    text-align: center;
+    padding: 20px 0;
+    font-style: italic;
+  }
+  
+  #extraction-results {
+    margin-top: 15px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 15px;
+  }
+  
+  .extracted-item {
+    background-color: #f0f9ff;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border-left: 3px solid #0ea5e9;
+  }
+  
+  .add-assignment h3 {
+    margin-top: 0;
+    color: #64748b;
+    font-size: 1rem;
+  }

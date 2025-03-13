@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AssignMate</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>
+        <img class="logo" src="images/assignmate-logo.png" alt="AssignMate logo">
+        AssignMate</h1>
+    
+    <div class="tab-container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="assignments">Assignments</button>
+        <button class="tab-btn" data-tab="schedule">Schedule</button>
+        <button class="tab-btn" data-tab="extract">Extract</button>
+      </div>
+      
+      <div class="tab-content active" id="assignments">
+        <div class="assignment-list" id="assignment-list">
+          <div class="empty-state">No assignments yet. Add one or extract from a page.</div>
+        </div>
+        
+        <div class="add-assignment">
+          <h3>Add Assignment</h3>
+          <input type="text" id="assignment-name" placeholder="Assignment name">
+          <input type="date" id="assignment-date" placeholder="Due date">
+          <select id="assignment-priority">
+            <option value="low">Low Priority</option>
+            <option value="medium" selected>Medium Priority</option>
+            <option value="high">High Priority</option>
+          </select>
+          <textarea id="assignment-notes" placeholder="Notes"></textarea>
+          <button id="add-btn">Add Assignment</button>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="schedule">
+        <div id="schedule-view">
+          <!-- Generated schedule will appear here -->
+          <div class="empty-state">No schedule generated yet.</div>
+        </div>
+        <button id="generate-schedule">Generate Study Schedule</button>
+      </div>
+      
+      <div class="tab-content" id="extract">
+        <p>Click the button below to scan the current page for potential assignment dates and deadlines.</p>
+        <button id="extract-btn">Extract From Page</button>
+        <div id="extraction-results">
+          <!-- Extraction results will appear here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
