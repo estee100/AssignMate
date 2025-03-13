@@ -17,9 +17,9 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/assignment-logo16.png",
-      "48": "images/assignment-logo48.png",
-      "128": "images/assignment-logo128.png"
+      "16": "images/assignmate-logo16.png",
+      "48": "images/assignmate-logo48.png",
+      "128": "images/assignmate-logo128.png"
     }
   },
   "background": {
@@ -32,8 +32,8 @@
     }
   ],
   "icons": {
-    "16": "images/assignment-logo16.png",
-    "48": "images/assignment-logo48.png",
-    "128": "images/assignment-logo128.png"
+    "16": "images/assignmate-logo16.png",
+    "48": "images/assignmate-logo48.png",
+    "128": "images/assignmate-logo128.png"
   }
 }

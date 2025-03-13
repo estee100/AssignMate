@@ -57,6 +57,9 @@ body {
     border-bottom: 3px solid #3a86ff;
     background-color: white;
   }
+  #center-text {
+    text-align: center;
+  }
 
   .tab-content {
     display: none;
