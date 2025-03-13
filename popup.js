@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listeners to the buttons within each page
     document.getElementById('add-btn').addEventListener('click', addAssignment);
-    //document.getElementById('extract-btn').addEventListener('click', extractFromPage);
-    //document.getElementById('generate-schedule').addEventListener('click', generateSchedule);
+    document.getElementById('extract-btn').addEventListener('click', extractFromPage);
+    document.getElementById('generate-schedule').addEventListener('click', generateSchedule);
 
     /**
      * Load the assignments from google chromes storage
@@ -110,5 +110,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 loadAssignments();
             });
         });
+    }
+
+    /**
+     * Removes a function from the assignment list filtering out the assignments
+     * id from the list and updating the list
+     * @param id
+     */
+    function removeAssignment(id) {
+        chrome.storage.local.get('assignments', function(data) {
+            if (data.assignments) {
+                const updatedAssignments = data.assignments.filter(
+                    // Filter out the deleted assignment from the list
+                    assignment => assignment.id !== id
+                );
+
+                chrome.storage.local.set({ 'assignments': updatedAssignments }, function() {
+                    loadAssignments();
+                });
+            }
+        });
+    }
+    
+    /**
+     * Extracts assignment information from the page
+     */
+    function extractFromPage() {
+        // Query the active tab
+        chrome.tabs.query({ active: true, currentWindow: true}, function(tabs) {
+
+            // Send a message to the content script
+            chrome.tabs.sendMessage(
+                tabs[0].id,
+                { action : "extractAssignments"},
+                function(response) {
+                    displayExtractionResults(response);
+                }
+            );
+        });
+    }
+
+    function displayExtractionResults(results) {
+        const extractionResults = document.getElementById('extraction-results');
+
+        if (!results || results.error) {
+            extractionResults.innerHTML = '<div class="empty-state">There was an error extracting information from the page.</div>';
+            return;
+        }
+
+        if (results.assignment && results.assignment.length > 0);
+        
+        
     }
 })

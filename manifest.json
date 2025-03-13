@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Student Assignment Planner",
+  "name": "AssignMate",
   "version": "1.0",
   "description": "Helps students organize assignments and deadlines",
   "permissions": [
