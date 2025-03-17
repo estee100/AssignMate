@@ -197,4 +197,85 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  
+  // Function to generate a study schedule based on assignments
+  function generateSchedule() {
+    chrome.storage.local.get('assignments', function(data) {
+      if (!data.assignments || data.assignments.length === 0) {
+        document.getElementById('schedule-view').innerHTML = 
+          '<div class="empty-state">Add some assignments first to generate a schedule.</div>';
+        return;
+      }
+      
+
+      // Simple schedule without Ai, need to implement ChatGPT API
+      const scheduleView = document.getElementById('schedule-view');
+      
+      // Sort assignments by due date
+      const sortedAssignments = data.assignments.sort((a, b) => 
+        new Date(a.dueDate) - new Date(b.dueDate)
+      );
+      
+      let html = '<h3>Recommended Study Schedule</h3>';
+      html += '<div class="schedule-container">';
+      
+      // Create a simple schedule - in a real implementation, this would use AI
+      sortedAssignments.forEach(assignment => {
+        const dueDate = new Date(assignment.dueDate);
+        const today = new Date();
+        
+        // Calculate days until due
+        const daysUntilDue = Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24));
+        
+        if (daysUntilDue < 0) {
+          // Past due
+          html += `
+            <div class="schedule-item overdue">
+              <div class="schedule-header">
+                <span class="schedule-title">${assignment.name}</span>
+                <span class="schedule-urgency">OVERDUE</span>
+              </div>
+              <div class="schedule-advice">This assignment is overdue. Complete immediately.</div>
+            </div>
+          `;
+        } else if (daysUntilDue <= 3) {
+          // Due soon
+          html += `
+            <div class="schedule-item urgent">
+              <div class="schedule-header">
+                <span class="schedule-title">${assignment.name}</span>
+                <span class="schedule-urgency">URGENT</span>
+              </div>
+              <div class="schedule-advice">Due in ${daysUntilDue} days. Allocate at least 2-3 hours daily.</div>
+            </div>
+          `;
+        } else if (daysUntilDue <= 7) {
+          // Due within a week
+          html += `
+            <div class="schedule-item soon">
+              <div class="schedule-header">
+                <span class="schedule-title">${assignment.name}</span>
+                <span class="schedule-urgency">UPCOMING</span>
+              </div>
+              <div class="schedule-advice">Due in ${daysUntilDue} days. Schedule 1-2 hours daily.</div>
+            </div>
+          `;
+        } else {
+          // Due later
+          html += `
+            <div class="schedule-item planned">
+              <div class="schedule-header">
+                <span class="schedule-title">${assignment.name}</span>
+                <span class="schedule-urgency">PLANNED</span>
+              </div>
+              <div class="schedule-advice">Due in ${daysUntilDue} days. Start with 30-60 minutes, 3 times a week.</div>
+            </div>
+          `;
+        }
+      });
+      
+      html += '</div>';
+      html += '<div class="schedule-note">Note: In a full implementation, this schedule would be generated using AI based on your learning preferences and assignment complexity.</div>';
+      
+      scheduleView.innerHTML = html;
+    });
+  }
